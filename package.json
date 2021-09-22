@@ -1,0 +1,21 @@
+{
+  "name": "factureapi",
+  "version": "1.0.0",
+  "description": "api de permettant de gérer la base de données des factures",
+  "main": "index.js",
+  "author": "AMIMBA Mickael",
+  "license": "MIT",
+  "scripts": {
+    "start": "nodemon --experimental-modules --es-module-specifier-resolution=node  index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^6.0.7",
+    "mongose": "^0.0.2-security"
+  },
+  "devDependencies": {
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.12"
+  }
+}
