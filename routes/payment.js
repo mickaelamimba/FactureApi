@@ -1,6 +1,15 @@
-const {paymentGet} = require("../controllers/payment");
+const {paymentGet, paymentUpdate, paymentCreate, paymentDelete} = require("../controllers/payment");
 const paymentRoute =(app)=>{
-    app.get("/payment", paymentGet)
+
+     //Reade
+     app.get("/payment", paymentGet)
+     //Update
+     app.post("/PaymentUpdate",paymentUpdate)
+     //Create
+     app.post("/PaymentCreate", paymentCreate)
+     //Delete
+     app.delete("/PaymentDelete",paymentDelete)
+ 
 
 }
 
