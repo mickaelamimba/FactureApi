@@ -13,10 +13,10 @@ const paymentCreate  = async (req, res)=>{
     try {
         const Payment = req.app.get("models").Payment
         const NewPayment = await new Payment({
-            pictures: req.body.pictures,
-            description :req.body.description,
-            amount: req.body.amount,
-            unitCost:req.body.unitCost
+            typeOfPayment: req.body.typeOfPayment,
+            Reference :req.body.Reference,
+            totalSum: req.body.totalSum,
+           paymentDate:req.body.paymentDate
 
         }).save()
         res.json(NewPayment)
@@ -32,7 +32,7 @@ const paymentUpdate  = async (req, res)=>{
             res.json("_id not fund ")
         }
         const Payment = req.app.get("models").Payment
-        const ToModifyPayment = await Payment.findById(req.boiy._id)
+        const ToModifyPayment = await Payment.findById(req.body._id)
         const toModifyKeys = Object.keys(req.body._id)
         for (const key of toModifyKeys) {
             toModifyKeys[key] = req.body.toMdify[key]

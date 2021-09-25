@@ -7,7 +7,7 @@ const invoiceRoute =(app)=>{
     //Create
     app.post("/invoiceCreate", invoiceCreate)
     //Delete
-    app.delete("/invoiceDelete",invoiceDelete)
+    app.post("/invoiceDelete",invoiceDelete)
 
 }
 

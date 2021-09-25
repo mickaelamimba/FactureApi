@@ -7,16 +7,16 @@ const invoiceRoute = require("./routes/invoice");
 const articleRoute = require("./routes/article");
 const companyRoute = require("./routes/company");
 const paymentRoute = require("./routes/payment");
+mongoose.connect("mongodb://localhost:27017/factureApi",{
+    useNewUrlParser: true,
+    useUnifiedTopology :true,
 
+})
 const app = express()
 app.use(express.json())
 app.set("models",models)
-app.use(morgan('dev'))
-mongoose.connect('mongodb://localhost:27017/factureApi',{
-    useNewUrlParser: true,
-    useUnifiedTopology :true,
-    useCreateIndex:true
-})
+app.use(morgan("dev"))
+
 let port = 8081
 //route
 paymentRoute(app)

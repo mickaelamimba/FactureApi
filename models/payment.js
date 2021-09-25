@@ -1,10 +1,11 @@
 const mongoose = require('mongoose')
 
 const PaymentSchema = new mongoose.Schema({
-    pictures: {type: String, required: false},
-    description :{type: String, required:true},
-    Amount: {type: Number, required: true},
-    unitCost: {type: Number, required:true}
+    typeOfPayment: {type: String, required: false},
+    Reference :{type: String, required:true},
+    totalSum: {type: Number, required: true},
+    paymentDate: {type: Date, required:true},
+
 
 })
 

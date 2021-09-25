@@ -8,7 +8,7 @@ const paymentRoute =(app)=>{
      //Create
      app.post("/PaymentCreate", paymentCreate)
      //Delete
-     app.delete("/PaymentDelete",paymentDelete)
+     app.post("/PaymentDelete",paymentDelete)
  
 
 }

@@ -7,10 +7,11 @@ const CompanySchema = new mongoose.Schema({
     fix: {type: Number, required: false},
     addressLineOne: {type: String, required:true},
     addressLineTwo :{type: String, required: false},
-    ZIPCode :{type: Number, required:true},
+    zipCode :{type: Number, required:true},
     city: {type:String, required:true},
     serialNumber: {type: Number, required:false},
-    website: {type: String, required:false}
+    website: {type: String, required:false},
+
 
 
 })

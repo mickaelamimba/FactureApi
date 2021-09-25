@@ -1,7 +1,7 @@
 const clientGet = async (req, res)=>{
     try{
-        const Client = req.app.get("models").Cleint 
-        const MyClient = await new Cleint.find()
+        const Client = req.app.get("models").Client
+        const MyClient = await Client.find()
         res.json(MyClient)
 
     } catch(error){
@@ -13,8 +13,8 @@ const clientGet = async (req, res)=>{
 
 const clientCreate = async(req,res)=>{
     try{
-        const Client = req.app.get("models").Cleint 
-        const newClient = await new Client({
+        const Client = req.app.get("models").Client
+        const NewClient = await new Client({
             firstName : req.body.firstName,
             lastName :req.body.lastName,
             mobile :req.body.mobile,
@@ -24,6 +24,7 @@ const clientCreate = async(req,res)=>{
             zipCode :req.body.zipCode,
             city: req.body.city
         }).save()
+        res.json(NewClient)
 
     }catch (error){
         res.json(error.message)
@@ -36,9 +37,9 @@ const clientDelete = async (req, res)=>{
             res.json("_id not fund")
             
         }
-        const Client = req.app.get("models").Cleint 
-        const ToDeletClient = await new Cleint.findById(req.body._id)
-        await ToDeletClient.remove()
+        const Client = req.app.get("models").Client
+        const ToDeleteClient = await Client.findById(req.body._id)
+        await ToDeleteClient.remove()
         res.json("susccessfully deleted")
 
     } catch(error){
@@ -47,6 +48,26 @@ const clientDelete = async (req, res)=>{
     }
     
 }
+const clientUpdate = async (req, res)=>{
+    try{
+        if (!req.body._id || !req.body.toModify) {
+            res.json("_id not fund")
+        }
+        const Client = req.app.get("models").Client
+        const ToModifyClient = await Client.findById(req.body._id)
+        const ToModifyKey = Object.keys(req.body.toModify)
+        for (const key of ToModifyKey) {
+            ToModifyClient[key] = req.body.toModify[key]
+        }
+        await ToModifyClient.save()
+        res.json(ToModifyClient)
+
+    } catch(error){
+        res.json(error.message)
+
+    }
+
+}
 
 
-module.exports = {clientGet,clientCreate,clientDelete }
+module.exports = {clientGet,clientCreate,clientDelete,clientUpdate }

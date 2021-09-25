@@ -3,11 +3,12 @@ const mongoose = require('mongoose')
 const ArticleSchema = new mongoose.Schema({
     pictures: {type: String, required: false},
     description :{type: String, required:true},
-    Amount: {type: Number, required: true},
-    unitCost: {type: Number, required:true}
+    amount: {type: Number, required: true},
+    unitCost: {type: Number, required:true},
+   invoice : {type: mongoose.Schema.Types.ObjectId, ref: "Invoice"}
 
 })
 
-const article = mongoose.model("Article",ArticleSchema)
+const Article = mongoose.model("Article",ArticleSchema)
 
-module.exports = article
+module.exports = Article

@@ -9,12 +9,14 @@ const invoiceGet = async (req, res)=>{
 }
 const invoiceCreate = async (req, res)=>{
     try {
+        const models = req.app.get("models")
         const Invoice = req.app.get("models").Invoice
         const NewInvoice = await new Invoice({
             invoiceYear: req.body.invoiceYear,
             conditions :req.body.conditions,
             invoiceNumber: req.body.invoiceNumber,
         }).save()
+        const article= await new models.Article({NewInvoice : _id})
         res.json(NewInvoice)
     } catch (error) {
         res.json(error.message)
@@ -26,7 +28,7 @@ const invoiceUpdate = async (req, res)=>{
             res.json("_id not fund")   
         }
         const Invoice = req.app.get("models").Invoice
-        const ToModifyInvoice = await new Invoice.findById(req.body._id)
+        const ToModifyInvoice = await  Invoice.findById(req.body._id)
         const toModifyKeys = Object.keys(req.body.toModify)
         for (const key of toModifyKeys) {
             ToModifyInvoice[key] = req.body.toModify[key]  

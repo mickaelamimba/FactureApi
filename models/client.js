@@ -7,11 +7,12 @@ const ClientSchema = new mongoose.Schema({
     fix: {type: Number, required: false},
     addressLineOne: {type: String, required:true},
     addressLineTwo :{type: String, required: false},
-    ZIPCode :{type: Number, required:true},
-    city: {type:String, required:true}
+    zipCode :{type: Number, required:true},
+    city: {type:String, required:true},
+
 
 })
 
-const client = mongoose.model("Client",ClientSchema)
+const Client = mongoose.model("Client",ClientSchema)
 
-module.exports = client
+module.exports = Client
